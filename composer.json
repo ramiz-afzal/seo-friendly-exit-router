@@ -1,5 +1,5 @@
 {
-	"name": "ramizafzal/plugin-prefix",
+	"name": "ramizafzal/seo-friendly-exit-router",
 	"type": "project",
 	"license": "GPL",
 	"authors": [
@@ -11,7 +11,7 @@
 	"minimum-stability": "dev",
 	"autoload": {
 		"psr-4": {
-			"PLUGIN_NAMESPACE\\": "./inc"
+			"SEO_FRIENDLY_EXIT_ROUTER\\": "./inc"
 		}
 	}
 }

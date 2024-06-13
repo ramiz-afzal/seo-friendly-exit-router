@@ -1,8 +1,9 @@
 <?php
 
-namespace PLUGIN_NAMESPACE\Admin;
+namespace SEO_FRIENDLY_EXIT_ROUTER\Admin;
 
-use PLUGIN_NAMESPACE\Base\Variable;
+use SEO_FRIENDLY_EXIT_ROUTER\Base\Variable;
+use SEO_FRIENDLY_EXIT_ROUTER\Base\Functions;
 
 if (!defined('ABSPATH')) exit;
 
@@ -14,13 +15,23 @@ class AdminPages
     {
         /* Add Admin Page */
         add_action('admin_menu', [$this, 'add_admin_page'], -99);
+
+        /* register admin pages setting fields*/
+        add_action('admin_init', [$this, 'register_admin_setting_fields']);
     }
 
 
     public static function get_admin_pages($object_context = null)
     {
         return array(
-            // defined admin pages here...
+            array(
+                'parent_slug'   => 'options-general.php',
+                'page_title'    => 'Redirect Routing',
+                'menu_title'    => 'Redirect Routing',
+                'capability'    => 'manage_options',
+                'menu_slug'     => Variable::GET('ADMIN_PAGE'),
+                'callback'      => [$object_context, 'render_admin_page'],
+            ),
         );
     }
 
@@ -71,6 +82,51 @@ class AdminPages
 
                     if (!empty($page_hook)) {
                         self::$views[$page_hook] = $menu_slug;
+                    }
+                }
+            }
+        }
+    }
+
+    public static function get_setting_fields()
+    {
+        return array(
+            // Default Settings
+            Functions::prefix('settings') => array(
+                Functions::prefix('intermediate_url_slug')   => array(
+                    'type'              => 'string',
+                    'sanitize_callback' => 'sanitize_text_field',
+                    'show_in_rest'      => false,
+                    'default'           => '',
+                ),
+                Functions::prefix('routing_enabled')   => array(
+                    'type'              => 'string',
+                    'sanitize_callback' => 'sanitize_text_field',
+                    'show_in_rest'      => false,
+                    'default'           => 'no',
+                ),
+            ),
+        );
+    }
+
+
+    public function register_admin_setting_fields()
+    {
+        $setting_fields = self::get_setting_fields();
+        if (!empty($setting_fields) && is_array($setting_fields)) {
+            foreach ($setting_fields as $option_group => $option_fields) {
+                if (!empty($option_fields) && is_array($option_fields)) {
+
+                    foreach ($option_fields as $field_key => $field) {
+
+                        $field_args                         = array();
+                        $field_args['type']                 = isset($field['type']) ? $field['type'] : 'string';
+                        $field_args['description']          = isset($field['description']) ? $field['description'] : null;
+                        $field_args['sanitize_callback']    = isset($field['sanitize_callback']) ? $field['sanitize_callback'] : 'sanitize_text_field';
+                        $field_args['show_in_rest']         = isset($field['show_in_rest']) ? $field['show_in_rest'] : false;
+                        $field_args['default']              = isset($field['default']) ? $field['default'] : null;
+
+                        register_setting($option_group, $field_key, $field_args);
                     }
                 }
             }

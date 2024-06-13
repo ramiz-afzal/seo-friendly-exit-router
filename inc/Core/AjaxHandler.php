@@ -1,9 +1,9 @@
 <?php
 
-namespace PLUGIN_NAMESPACE\Core;
+namespace SEO_FRIENDLY_EXIT_ROUTER\Core;
 
-use PLUGIN_NAMESPACE\Base\Functions;
-use PLUGIN_NAMESPACE\Base\Constant;
+use SEO_FRIENDLY_EXIT_ROUTER\Base\Functions;
+use SEO_FRIENDLY_EXIT_ROUTER\Base\Constant;
 
 class AjaxHandler
 {

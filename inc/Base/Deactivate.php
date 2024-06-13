@@ -1,6 +1,6 @@
 <?php
 
-namespace PLUGIN_NAMESPACE\Base;
+namespace SEO_FRIENDLY_EXIT_ROUTER\Base;
 
 if (!defined('ABSPATH')) exit;
 

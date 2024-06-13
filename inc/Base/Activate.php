@@ -1,8 +1,9 @@
 <?php
 
-namespace PLUGIN_NAMESPACE\Base;
+namespace SEO_FRIENDLY_EXIT_ROUTER\Base;
 
-use PLUGIN_NAMESPACE\Base\Functions;
+use SEO_FRIENDLY_EXIT_ROUTER\Base\Functions;
+use SEO_FRIENDLY_EXIT_ROUTER\Core\WordPressHooks;
 
 if (!defined('ABSPATH')) exit;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace PLUGIN_NAMESPACE\Base;
+namespace SEO_FRIENDLY_EXIT_ROUTER\Base;
 
-use PLUGIN_NAMESPACE\Base\Variable;
+use SEO_FRIENDLY_EXIT_ROUTER\Base\Variable;
 
 if (!defined('ABSPATH')) exit;
 
@@ -172,6 +172,20 @@ class Functions
         }
 
         return false;
+    }
+
+    public static function get_template_file(string $filename)
+    {
+        if (empty($filename)) {
+            return null;
+        }
+
+        $file_path = Variable::GET('TEMPLATES') . '/' . $filename;
+        if (!file_exists($file_path)) {
+            return null;
+        }
+
+        return $file_path;
     }
 
     public static function css_file(string $filename = null)

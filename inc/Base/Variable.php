@@ -1,6 +1,6 @@
 <?php
 
-namespace PLUGIN_NAMESPACE\Base;
+namespace SEO_FRIENDLY_EXIT_ROUTER\Base;
 
 if (!defined('ABSPATH')) exit;
 
@@ -9,19 +9,19 @@ final class Variable
     private static $VARIABLES = [];
     public static function LOAD_VARIABLES($__FILE__)
     {
-        self::$VARIABLES['PREFIX']                      = 'plugin-prefix';
-        self::$VARIABLES['ADMIN_PAGE']                  = 'plugin-prefix-settings';
-        self::$VARIABLES['TRANSLATION_DOMAIN']          = 'pluginPrefix';
+        self::$VARIABLES['PREFIX']                      = 'seo-friendly-exit-router';
+        self::$VARIABLES['ADMIN_PAGE']                  = 'seo-friendly-exit-router-settings';
+        self::$VARIABLES['TRANSLATION_DOMAIN']          = 'seoFriendlyExitRouter';
         self::$VARIABLES['URL']                         = plugin_dir_url($__FILE__);
         self::$VARIABLES['PATH']                        = plugin_dir_path($__FILE__);
         self::$VARIABLES['BASENAME']                    = plugin_basename($__FILE__);
         self::$VARIABLES['TEMPLATES']                   = self::$VARIABLES['PATH'] . 'templates';
-        self::$VARIABLES['LOAD_FRONTEND_FILES']         = true;
-        self::$VARIABLES['LOAD_ADMIN_FILES']            = true;
-        self::$VARIABLES['LOCALIZE_JS_OBJECT']          = true;
-        self::$VARIABLES['JS_OBJECT_NAME']              = 'pluginPrefixAjax';
-        self::$VARIABLES['LOCALIZE_ADMIN_JS_OBJECT']    = true;
-        self::$VARIABLES['JS_ADMIN_OBJECT_NAME']        = 'pluginPrefixAdminAjax';
+        self::$VARIABLES['LOAD_FRONTEND_FILES']         = false;
+        self::$VARIABLES['LOAD_ADMIN_FILES']            = false;
+        self::$VARIABLES['LOCALIZE_JS_OBJECT']          = false;
+        self::$VARIABLES['JS_OBJECT_NAME']              = 'seoFriendlyExitRouterAjax';
+        self::$VARIABLES['LOCALIZE_ADMIN_JS_OBJECT']    = false;
+        self::$VARIABLES['JS_ADMIN_OBJECT_NAME']        = 'seoFriendlyExitRouterAdminAjax';
 
         // load file variables
         self::GET_FILE_VARIABLES($__FILE__);

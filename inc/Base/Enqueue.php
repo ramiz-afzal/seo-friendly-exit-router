@@ -1,9 +1,9 @@
 <?php
 
-namespace PLUGIN_NAMESPACE\Base;
+namespace SEO_FRIENDLY_EXIT_ROUTER\Base;
 
-use PLUGIN_NAMESPACE\Base\Variable;
-use PLUGIN_NAMESPACE\Base\Functions;
+use SEO_FRIENDLY_EXIT_ROUTER\Base\Variable;
+use SEO_FRIENDLY_EXIT_ROUTER\Base\Functions;
 
 if (!defined('ABSPATH')) exit;
 

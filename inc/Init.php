@@ -1,6 +1,6 @@
 <?php
 
-namespace PLUGIN_NAMESPACE;
+namespace SEO_FRIENDLY_EXIT_ROUTER;
 
 if (!defined('ABSPATH')) exit;
 
@@ -12,6 +12,7 @@ final class Init
             Core\Shortcode::class,
             Core\AjaxHandler::class,
             Core\WordPressHooks::class,
+            Core\WoocommerceHooks::class,
             Admin\AdminPages::class,
         );
     }
