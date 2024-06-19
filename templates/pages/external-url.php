@@ -1,21 +1,23 @@
 <?php
 
+use SEO_FRIENDLY_EXIT_ROUTER\Base\Constant;
 use SEO_FRIENDLY_EXIT_ROUTER\Base\Functions;
 use SEO_FRIENDLY_EXIT_ROUTER\Base\Variable;
 
 $pid = get_query_var('pid');
-$show_title = '';
-$show_url   = '#';
+$show_title     = '';
+$show_url       = '#';
+$routing_delay  = esc_attr(get_option(Functions::prefix('routing_delay'), Constant::ROUTING_DELAY));
 if (!empty($pid) && function_exists('wc_get_product')) {
     $product = wc_get_product($pid);
     if (!empty($product)) {
         $show_title = $product->get_title();
-        $show_url = $product->get_product_url();
+        $show_url   = $product->get_product_url();
     }
 }
 wp_enqueue_style(Functions::with_uuid('frontend-styles'), Functions::css_file('frontend.css'), [], Functions::get_uuid());
 wp_enqueue_script(Functions::with_uuid('frontend-script'), Functions::js_file('frontend.js'), [], Functions::get_uuid(), true);
-wp_localize_script(Functions::with_uuid('frontend-script'), Variable::GET('JS_OBJECT_NAME'), ['pid' => $pid, 'show_url' => $show_url]);
+wp_localize_script(Functions::with_uuid('frontend-script'), Variable::GET('JS_OBJECT_NAME'), ['pid' => $pid, 'show_url' => $show_url, 'routing_delay' => $routing_delay]);
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>

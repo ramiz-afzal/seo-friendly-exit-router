@@ -11,4 +11,7 @@ final class Constant
 
     // URLs
     const URL_EXTERNAL_SLUG = 'external-url';
+
+    // constants
+    const ROUTING_DELAY = 3;
 }

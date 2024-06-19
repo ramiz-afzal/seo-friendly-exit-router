@@ -2,6 +2,7 @@
 
 namespace SEO_FRIENDLY_EXIT_ROUTER\Admin;
 
+use SEO_FRIENDLY_EXIT_ROUTER\Base\Constant;
 use SEO_FRIENDLY_EXIT_ROUTER\Base\Variable;
 use SEO_FRIENDLY_EXIT_ROUTER\Base\Functions;
 
@@ -93,17 +94,23 @@ class AdminPages
         return array(
             // Default Settings
             Functions::prefix('settings') => array(
-                Functions::prefix('intermediate_url_slug')   => array(
-                    'type'              => 'string',
-                    'sanitize_callback' => 'sanitize_text_field',
-                    'show_in_rest'      => false,
-                    'default'           => '',
-                ),
                 Functions::prefix('routing_enabled')   => array(
                     'type'              => 'string',
                     'sanitize_callback' => 'sanitize_text_field',
                     'show_in_rest'      => false,
                     'default'           => 'no',
+                ),
+                Functions::prefix('intermediate_url_slug')   => array(
+                    'type'              => 'string',
+                    'sanitize_callback' => 'sanitize_text_field',
+                    'show_in_rest'      => false,
+                    'default'           => Constant::URL_EXTERNAL_SLUG,
+                ),
+                Functions::prefix('routing_delay')   => array(
+                    'type'              => 'int',
+                    'sanitize_callback' => 'sanitize_text_field',
+                    'show_in_rest'      => false,
+                    'default'           => Constant::ROUTING_DELAY,
                 ),
             ),
         );

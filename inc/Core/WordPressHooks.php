@@ -36,7 +36,6 @@ class WordPressHooks
             return $template;
         }
 
-        Functions::debug_log(Functions::get_template_file('pages/external-url.php'));
         return Functions::get_template_file('pages/external-url.php');
     }
 }

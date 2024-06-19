@@ -8,7 +8,7 @@ window.addEventListener('DOMContentLoaded', function () {
 		return;
 	}
 
-	let timeRemaining = 3;
+	let timeRemaining = seoFriendlyExitRouterAjax.routing_delay || 5;
 	let tracker = setInterval(function () {
 		if (timeRemaining < 1) {
 			clearInterval(tracker);
