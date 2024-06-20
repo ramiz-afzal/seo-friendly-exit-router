@@ -31,7 +31,7 @@ wp_localize_script(Functions::with_uuid('frontend-script'), Variable::GET('JS_OB
 <body class="redirection-page">
     <section class="redirection-content">
         <h2 class="redirection-title">We are sending you to the official booking site for <?= $show_title; ?></h2>
-        <p class="redirection-subtitle">Remember to use <?= bloginfo('title'); ?> seat reviews before buying!</p>
+        <p class="redirection-subtitle">Please add a review of <?= bloginfo('title'); ?> on Google.</p>
         <p class="redirection-timer">Redirecting in <span id="time-left">...</span> seconds</p>
         <p class="redirection-link-wrap"><a class="redirection-link" href="<?= $show_url; ?>">Go now</a></p>
     </section>
